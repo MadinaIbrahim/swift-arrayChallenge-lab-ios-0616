@@ -12,26 +12,30 @@ class ViewController: UIViewController {
     
     var shoppingList: [String] = []
     
-    
-    let numberOfItemsNeeded : [Int] = [6, 4, 12, 4]
-    let itemsNeeded : [String] = ["Bananas", "Apples", "Eggs", "Rolls"]
+    let numberOfItemsNeeded = [6, 4, 12, 4]
+    let itemsNeeded = ["Bananas", "Apples", "Eggs", "Rolls"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        makeShoppingList(itemsNeeded, quantityOfItems: numberOfItemsNeeded)
-        print(shoppingList)
+        shoppingList = makeShoppingList(itemsNeeded, quantityOfItems: numberOfItemsNeeded)
+        
     }
     
     
-    func makeShoppingList(_: [String], quantityOfItems: [Int]) -> [String] {
+    func makeShoppingList(items: [String], quantityOfItems: [Int]) -> [String] {
         //that underscore _ means that the first argument to this function will have 
         //NO external name 'itemsNeeded' when it is called which happens by default.
-        //The second argument to this function will have an external name of quantityOfItems when it is called.
+        //The second argument to this function WILL have an external name of quantityOfItems when it is called.
         
-        for (index, item) in quantityOfItems.enumerate() {
-            shoppingList.append("\(index + 1). \(quantityOfItems[index]) \(item)")
+        var localArray: [String] = []
+        
+        for (index, item) in items.enumerate() {
+            
+            localArray.append("\(index + 1). " + "\(quantityOfItems[index]) " + item)
+            
         }
-        return shoppingList
+        return localArray
+    
     }
 }
